@@ -12,19 +12,26 @@
   </head>
   <body class="bg-dark">
 
-
     <div class="card text-center">
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert {{ message.tags }} m-2" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+        {% endif %}
         <div class="card-header">
-          Featured
+          <a href="{% url 'main' %}" style="text-decoration: none; font-size: 15px; color:black">{{ data.name }}</a> <b>{{ data.price2 }} so`m</b>
         </div>
         <div class="card-body">
-            <form>
+            <form action="{% url 'amount_page' data.id %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Miqdor kiriting!</label>
-                  <input type="number" class="form-control">
+                  <label class="form-label">Miqdorini kiriting!</label>
+                  <input type="number" class="form-control" name="amount">
+                  <input type="float" value="{{ data.amount }}" name="miqdor_baza" hidden>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Saqlash</button>
               </form>
         </div>
       </div>
