@@ -8,37 +8,42 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title></title>
   </head>
   <body class="bg-dark">
+    
 
-    <div class="card text-center">
-        {% if messages %}
-          {% for message in messages %}
-          <div class="alert {{ message.tags }} m-2" role="alert">
-            {{ message }}
-          </div>
-          {% endfor %}
-        {% endif %}
 
-        {% for i in data %}
-        <div class="card-header">
-          <a href="{% url 'main' %}" style="text-decoration: none; font-size: 15px; color:black">{{ i.name }}</a> <b>{{ i.price2 }} so`m</b>
-        </div>
+
+
+      <div class="card bg-dark">
         <div class="card-body">
-            <form action="{% url 'amount_page' i.id %}" method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                  <label class="form-label">Miqdorini kiriting!</label>
-                  <input type="number" class="form-control" name="amount">
-                  <input type="float" value="{{ i.amount }}" name="miqdor_baza" hidden>
+          <div class="card-text" style="margin-top: 70px;">
+            {% for a in data %}
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card bg-success m-2">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-10">
+                        <div class="d-flex align-items-center align-self-start ">
+                          <a class="mb-0 text-decoration-none" href="{% url 'amount_page' a.id %}" style="color: white; font-size: 20px;">{{ a.name }}</a>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="icon icon-box-success ">
+                          <span class="mdi mdi-arrow-top-right icon-item">{{ a.amount }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Saqlash</button>
-              </form>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
         </div>
-        {% endfor %}
+
       </div>
-    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -49,4 +54,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
   </body>
+
 </html>
