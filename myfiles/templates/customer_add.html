@@ -13,30 +13,24 @@
   <body class="bg-dark">
 
     <div class="card text-center">
-        {% if messages %}
-          {% for message in messages %}
-          <div class="alert {{ message.tags }} m-2" role="alert">
-            {{ message }}
-          </div>
-          {% endfor %}
-        {% endif %}
-
-        {% for i in data %}
-        <div class="card-header">
-          <a href="{% url 'main' %}" style="text-decoration: none; font-size: 15px; color:black">{{ i.name }}</a> <b>{{ i.price2 }} so`m</b>
-        </div>
         <div class="card-body">
-            <form action="{% url 'amount_page' i.id %}" method="POST">
+            <form action="{% url 'customer_add' %}" method="POST">
                 {% csrf_token %}
-                <div class="mb-3">
-                  <label class="form-label">Miqdorini kiriting!</label>
-                  <input type="float" class="form-control" name="amount">
-                  <input type="float" value="{{ i.amount }}" name="miqdor_baza" hidden>
-                </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Haridor</label>
+                      <input type="text" class="form-control" name="name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Telefon raqam</label>
+                      <input type="text" class="form-control" name="phone">
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" name="comment" placeholder="Izoh yozing!" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Izoh</label>
+                      </div>
                 <button type="submit" class="btn btn-primary">Saqlash</button>
               </form>
         </div>
-        {% endfor %}
       </div>
     <!-- Optional JavaScript; choose one of the two! -->
 

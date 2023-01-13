@@ -22,6 +22,17 @@
               <p style="color: white; font-size: 20px;">Market</p>
             
             </div>
+            {% if o == 0 %}
+            <div col-2 style="margin-right: 20px;">
+              <a class="btn btn-outline-success position-relative" style="color: white; margin-left: 15px;">Savat <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ o }}
+                <span class="visually-hidden">unread messages</span>
+              </span></a>
+            </div>
+            {% else %}
             <div col-2 style="margin-right: 20px;">
               <a href="{% url 'sell_page' %}" class="btn btn-outline-success position-relative" style="color: white; margin-left: 15px;">Savat <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -31,6 +42,7 @@
                 <span class="visually-hidden">unread messages</span>
               </span></a>
             </div>
+            {% endif %}
 
 
 
@@ -57,9 +69,9 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-10">
-                        <div class="d-flex align-items-center align-self-start ">
-                          <a class="mb-0 text-decoration-none" href="{% url 'amount_page' a.id %}" style="color: white; font-size: 20px;">{{ a.name }}</a>
-                        </div>
+                        <a href="{% url 'amount_page' a.id %}" class="d-flex align-items-center align-self-start " style="color: white; text-decoration: none; font-size: 20px;">
+                          {{ a.name }} <br> {{ a.price2 }}
+                        </a>
                       </div>
                       <div class="col-2">
                         <div class="icon icon-box-success ">
@@ -74,9 +86,9 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-10">
-                        <div class="d-flex align-items-center align-self-start ">
-                          <a class="mb-0 text-decoration-none" style="color: white; font-size: 20px;">{{ a.name }}</a>
-                        </div>
+                        <a class="d-flex align-items-center align-self-start " style="color: white; text-decoration: none; font-size: 20px;">
+                          {{ a.name }} <br> {{ a.price1 }}
+                        </a>
                       </div>
                       <div class="col-2">
                         <div class="icon icon-box-success ">

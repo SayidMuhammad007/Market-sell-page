@@ -13,30 +13,21 @@
   <body class="bg-dark">
 
     <div class="card text-center">
-        {% if messages %}
-          {% for message in messages %}
-          <div class="alert {{ message.tags }} m-2" role="alert">
-            {{ message }}
-          </div>
-          {% endfor %}
-        {% endif %}
-
-        {% for i in data %}
-        <div class="card-header">
-          <a href="{% url 'main' %}" style="text-decoration: none; font-size: 15px; color:black">{{ i.name }}</a> <b>{{ i.price2 }} so`m</b>
-        </div>
         <div class="card-body">
-            <form action="{% url 'amount_page' i.id %}" method="POST">
+            <form action="{% url 'selled' 3 %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                  <label class="form-label">Miqdorini kiriting!</label>
-                  <input type="float" class="form-control" name="amount">
-                  <input type="float" value="{{ i.amount }}" name="miqdor_baza" hidden>
+                  <label class="form-label">Mijozni tanlang!</label>
+                  <select class="form-select" aria-label="Default select example" name="mijoz">
+                    {% for customer in customers %}
+                    <option value="{{ customer.id }}" selected>{{ customer.name }}</option>
+                    {% endfor %}
+                  </select>
                 </div>
+                <a href="{% url 'customer_add' %}" type="submit" class="btn btn-primary mr-5" style="text-decoration: none; color:white;">Yangi qo`shish +</a>
                 <button type="submit" class="btn btn-primary">Saqlash</button>
               </form>
         </div>
-        {% endfor %}
       </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
